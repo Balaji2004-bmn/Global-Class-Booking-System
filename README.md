@@ -113,7 +113,7 @@ If overlap exists:
 
 ## 1. Clone Repository
 
-git clone <repository-url>
+git clone https://github.com/Balaji2004-bmn/Global-Class-Booking-System.git
 
 ## 2. Start PostgreSQL
 
