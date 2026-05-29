@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: class-booking-postgres
+    environment:
+      POSTGRES_DB: class_booking
+      POSTGRES_USER: booking_app
+      POSTGRES_PASSWORD: booking_app
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - class_booking_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U booking_app -d class_booking"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  class_booking_pgdata:
+

@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Global Class Offering Booking System",
+    "_postman_id": "5f4c5383-f70a-4f9d-8b1f-5f41cdb4f927",
+    "description": "Sample REST requests for the Spring Boot/PostgreSQL assessment project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Teacher",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/teachers",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Avery Teacher\",\n  \"timezone\": \"America/New_York\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Create Parent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/parents",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Priya Parent\",\n  \"timezone\": \"Asia/Kolkata\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Create Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/courses",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Physics Foundations\",\n  \"description\": \"Introductory physics for middle school learners\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Create Offering",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/offerings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"courseId\": 1,\n  \"teacherId\": 1,\n  \"title\": \"Physics June Cohort\",\n  \"timezone\": \"America/New_York\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/offerings/1/sessions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"startTime\": \"2026-06-01T10:00:00\",\n  \"endTime\": \"2026-06-01T11:00:00\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Offerings Converted To Parent Timezone",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/offerings?timezone=Asia/Kolkata"
+      }
+    },
+    {
+      "name": "Book Offering",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/bookings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"parentId\": 1,\n  \"offeringId\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Parent Bookings",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/parents/1/bookings"
+      }
+    },
+    {
+      "name": "Get Teacher Offerings",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/teachers/1/offerings"
+      }
+    }
+  ]
+}
